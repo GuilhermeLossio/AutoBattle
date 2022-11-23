@@ -9,11 +9,7 @@
 using namespace std;
 Character::Character(Types::CharacterClass charcaterClass)
 {
-    float Health;
-    float BaseDamage;
-    float DamageMultiplier;
-    //public GridBox currentBox;
-    int PlayerIndex;
+    Types::GridBox currentBox(0, 0, false, 0);
 }
 
 Character::~Character() 
@@ -44,7 +40,15 @@ void Character::WalkTo(bool CanWalk)
 
 
 
-void Character::StartTurn(Grid* battlefield) {
+void Character::StartTurn(Grid* battlefield, bool IsPlayerTurn) {
+    
+    //Here we going to verify if the player is alive.
+    if (target->target->Health <= 0)
+    {
+        IsDead = true;
+        return;
+    }
+
 
     {
 

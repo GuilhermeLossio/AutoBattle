@@ -1,4 +1,3 @@
-
 #include "Grid.h"
 #include "BattleField.h"
 #include "Types.h"
@@ -7,6 +6,7 @@
 #include "BattleField.h"
 #include <list>
 #include <string>
+#include <vector>>
 
 using namespace std;
 
@@ -40,7 +40,7 @@ void BattleField::GetPlayerChoice()
     getline(cin, choice);
 
     while (true) {
-    if (choice.length() == 1)
+        if (choice.length() == 1)
         {
             if (choice[0] == '1'
                 || choice[0] == '2'
@@ -52,50 +52,35 @@ void BattleField::GetPlayerChoice()
         }
     }
 
-    CreatePlayerCharacter(choice);
-
-    //=============================================================
-
-    //int num = stoi(choice);
-    
-    //CreatePlayerCharacter(num);
-    
-
-
-    /* if(cin >> choice)
-    {
-        CreatePlayerCharacter(choice);
-    } */
-    /* switch ((choice))
-    {
-    case "1":
-        CreatePlayerCharacter(choice);
-        break;
-    case "2":
-        CreatePlayerCharacter(choice);
-        break;
-    case "3":
-        CreatePlayerCharacter(choice);
-        break;
-    case "4":
-        CreatePlayerCharacter(choice);
-        break;
-    default:
-        GetPlayerChoice();
-        break;
-    } */
+    //I removed the switch case for being really desnecessary.
+    CreatePlayerCharacter(stoi(choice));
 }
 
 void BattleField::CreatePlayerCharacter(int classIndex)
 {
 
-    Types::CharacterClass* characterClass = (Types::CharacterClass*)classIndex;
-    printf("Player Class Choice: {characterClass}");
+    Types::CharacterClass characterClass = static_cast<Types::CharacterClass>(classIndex);
+    //Here i puted a way to show to player the character he chosed
+    switch ((classIndex))
+    {
+    case 1:
+        printf("Player Class Choice: Paladin\n");
+        break;
+    case 2:
+        printf("Player Class Choice: Warrior\n");
+        break;
+    case 3:
+        printf("Player Class Choice: Cleric\n");
+        break;
+    case 4:
+        printf("Player Class Choice: Archer\n");
+        break;
+    }
     
     PlayerCharacter = make_shared<Character>(characterClass);
     
     PlayerCharacter->Health = 100;
-    PlayerCharacter->BaseDamage = 20;
+    PlayerCharacter->BaseDamage = 30;
     PlayerCharacter->PlayerIndex = 0;
 
     CreateEnemyCharacter();
@@ -105,15 +90,33 @@ void BattleField::CreatePlayerCharacter(int classIndex)
 void BattleField::CreateEnemyCharacter()
 {
     //randomly choose the enemy class and set up vital variables
-    
     int randomInteger = GetRandomInt(1, 4);
-    Types::CharacterClass enemyClass = (Types::CharacterClass)randomInteger;
-    printf("Enemy Class Choice: {enemyClass}");
-    EnemyCharacter = new Character(enemyClass);
+
+    Types::CharacterClass enemyClass = static_cast<Types::CharacterClass>(randomInteger);
+
+    //Here i puted a switch case for the class choised.
+    switch ((randomInteger))
+    {
+    case 1:
+        printf("Enemy Class Choice: Paladin\n");
+        break;
+    case 2:
+        printf("Enemy Class Choice: Warrior\n");
+        break;
+    case 3:
+        printf("Enemy Class Choice: Cleric\n");
+        break;
+    case 4:
+        printf("Enemy Class Choice: Archer\n");
+        break;
+    }
+
+    EnemyCharacter = make_shared<Character>(enemyClass);
+
     EnemyCharacter->Health = 100;
-    PlayerCharacter->BaseDamage = 20;
-    PlayerCharacter->PlayerIndex = 1;
-    StartGame();
+    EnemyCharacter->BaseDamage = 20;
+    EnemyCharacter->DamageMultiplier = 1;
+    EnemyCharacter->PlayerIndex = 1;
 
 }
 
@@ -122,9 +125,15 @@ void BattleField::StartGame()
     //populates the character variables and targets
     EnemyCharacter->target = PlayerCharacter;
     PlayerCharacter->target = EnemyCharacter;
-    AllPlayers->push_back(PlayerCharacter);
-    AllPlayers->push_back(EnemyCharacter);
+
+    //Here we going to put the player and enemy on battlefield
     AlocatePlayers();
+
+    AllPlayers->push_back(*PlayerCharacter);
+    AllPlayers->push_back(*EnemyCharacter);
+
+    grid->drawBattlefield(5, 5);
+
     StartTurn();
 
 }

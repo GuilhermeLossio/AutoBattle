@@ -6,7 +6,7 @@
 #include "BattleField.h"
 #include <list>
 #include <string>
-#include <vector>>
+#include <vector>
 
 using namespace std;
 
@@ -15,31 +15,24 @@ BattleField::BattleField() {
     grid = new Grid(5, 5);
     AllPlayers = new list<Character>();
     int currentTurn = 0;
-
-    //Testing if is necessary
-    //int numberOfPossibleTiles = grid->grids.size();
-    //Setup();
 }
 
 void BattleField::Setup()
 {
     GetPlayerChoice();
-    CreateEnemyCharacter();
     StartGame();
 }
 
 void BattleField::GetPlayerChoice()
 {
     string choice;
-    //asks for the player to choose between for possible classes via console.
-    printf("Choose Between One of this Classes:\n");
-
-    printf("[1] Paladin, [2] Warrior, [3] Cleric, [4] Archer");
-    //store the player choice in a variable
-
-    getline(cin, choice);
-
     while (true) {
+        //asks for the player to choose between for possible classes via console.
+        printf("Choose Between One of this Classes:\n");
+        printf("[1] Paladin, [2] Warrior, [3] Cleric, [4] Archer\n");
+        //store the player choice in a variable
+
+        getline(cin, choice);
         if (choice.length() == 1)
         {
             if (choice[0] == '1'
@@ -115,7 +108,7 @@ void BattleField::CreateEnemyCharacter()
     EnemyCharacter = make_shared<Character>(enemyClass);
 
     EnemyCharacter->Health = 100;
-    EnemyCharacter->BaseDamage = 20;
+    EnemyCharacter->BaseDamage = 30;
     EnemyCharacter->DamageMultiplier = 1;
     EnemyCharacter->PlayerIndex = 1;
 
@@ -141,44 +134,70 @@ void BattleField::StartGame()
 
 void BattleField::StartTurn() {
 
-    if (currentTurn == 0)
-    {
-        //AllPlayers.Sort();  
-    }
-    list<Character>::iterator it;
 
-    for (it = AllPlayers->begin(); it != AllPlayers->end(); ++it) {
-        it->StartTurn(grid);
-    }
 
     currentTurn++;
+
+    list<Character>::iterator it;
+
+    bool otherTurn = true;
+
+    printf("\n----------------------------------------------------------------------------------------\n");
+    printf("----------------------------------------------------------------------------------------\n");
+    printf("Start of the Turn %d\n\n", currentTurn);
+    printf("Player Health: %.0f \n", PlayerCharacter->Health);
+    printf("Player Current Location: Line: %d Column: %d \n\n", PlayerCharacter->currentBox.xIndex, PlayerCharacter->currentBox.yIndex);
+
+    printf("Enemy Health: %.0f \n", EnemyCharacter->Health);
+    printf("Enemy Current Location: Line: %d Column: %d \n\n", EnemyCharacter->currentBox.xIndex, EnemyCharacter->currentBox.yIndex);
+
+
+    for (it = AllPlayers->begin(); it != AllPlayers->end(); ++it) {
+
+        it->StartTurn(grid, otherTurn);
+        otherTurn = false;
+    }
+
+
+    printf("Player Health: %.0f \n", PlayerCharacter->Health);
+    printf("Player Current Location: Line: %d Column: %d \n\n", PlayerCharacter->currentBox.xIndex, PlayerCharacter->currentBox.yIndex);
+
+    printf("Enemy Health: %.0f \n", EnemyCharacter->Health);
+    printf("Enemy  Current Location: Line: %d Column: %d \n\n", EnemyCharacter->currentBox.xIndex, EnemyCharacter->currentBox.yIndex);
+
+    printf("\nCurrently scenery %d\n", currentTurn);
+    grid->drawBattlefield(5, 5);
+
+    printf("\nEnd of the Turn %d\n", currentTurn);
+    printf("\n----------------------------------------------------------------------------------------\n");
+
     HandleTurn();
+
+
+
 }
 
 void BattleField::HandleTurn()
 {
-    if (PlayerCharacter->Health == 0)
+    if (PlayerCharacter->Health <= 0)
     {
-        return;
+        printf("\n--------------------------------Game Over----------------------------------\n");
+        printf("-----------------------------The Enemy Wins!------------------------------\n");
     }
-    else if (EnemyCharacter->Health == 0)
+    else if (EnemyCharacter->Health <= 0)
     {
-        printf("\n");
-
-        // endgame?
-
-        printf("\n");
-
-        return;
+        printf("\n--------------------------------Game Over----------------------------------\n");
+        printf("-----------------------------The Player Wins!------------------------------\n");
     }
     else
     {
         printf("\n");
-        printf("Click on any key to start the next turn...\n");
+        printf("---------------------------Press Enter to start the next turn---------------------------");
         printf("\n");
 
-        //TODO
-        //ConsoleKeyInfo key = Console.ReadKey();
+        string PlayerInput;
+        getline(cin, PlayerInput);
+
         StartTurn();
     }
 }
@@ -186,30 +205,30 @@ void BattleField::HandleTurn()
 int BattleField::GetRandomInt(int min, int max)
 {
     
-    int index = GetRandomInt(min, max);
-    return index;
+    return rand() % max + min;
 }
 
 void BattleField::AlocatePlayers()
 {
     AlocatePlayerCharacter();
-
+    AlocateEnemyCharacter();
 }
 
 void BattleField::AlocatePlayerCharacter()
 {
-    int random = 0;
+    int random = GetRandomInt(0, ((grid->xLenght * grid->yLength) - 1));
+
     auto l_front = grid->grids.begin();
     advance(l_front, random);
     Types::GridBox* RandomLocation = &*l_front;
 
     if (!RandomLocation->ocupied)
     {
-        //Types::GridBox* PlayerCurrentLocation = RandomLocation;
         PlayerCurrentLocation = &*l_front;
         l_front->ocupied = true;
         PlayerCharacter->currentBox = *l_front;
-        AlocateEnemyCharacter();
+        printf("Player Current Location: Line: %d Column: %d \n", PlayerCharacter->currentBox.xIndex, PlayerCharacter->currentBox.yIndex);
+        grid->PlayerCurrentLocation = PlayerCurrentLocation;
     }
     else
     {
@@ -220,17 +239,20 @@ void BattleField::AlocatePlayerCharacter()
 void BattleField::AlocateEnemyCharacter()
 {
     
-    int random = 24;
+    int random = GetRandomInt(0, ((grid->xLenght * grid->yLength) - 1));
+
+
     auto l_front = grid->grids.begin();
     advance(l_front, random);
     Types::GridBox* RandomLocation = &*l_front;
-    
+
     if (!RandomLocation->ocupied)
     {
         EnemyCurrentLocation = &*l_front;
         l_front->ocupied = true;
         EnemyCharacter->currentBox = *l_front;
-        grid->drawBattlefield(5, 5);
+        printf("Enemy Current Location: Line: %d Column: %d \n", EnemyCharacter->currentBox.xIndex, EnemyCharacter->currentBox.yIndex);
+        grid->EnemyCurrentLocation = EnemyCurrentLocation;
     }
     else
     {

@@ -20,7 +20,7 @@ Character::~Character()
 void Character::TakeDamage(float amount) 
 {
     Health = Health - amount;
-	if ((Health -= BaseDamage) <= 0) 
+	if (Health <= 0) 
 	{
 		Die();
 	}
@@ -208,7 +208,7 @@ bool Character::CheckCloseTargets(Grid* battlefield)
 	{
 		if (battlefield->grids[(currentBox.xIndex * battlefield->xLenght) + (currentBox.yIndex - 1)].ocupied == true)
 		{
-			printf("Found a Target to the Left \n");
+			printf("Found a Target at the Left \n");
 			return true;
 		}
 	}
@@ -219,7 +219,7 @@ bool Character::CheckCloseTargets(Grid* battlefield)
 	{
 		if (battlefield->grids[(currentBox.xIndex * battlefield->xLenght) + (currentBox.yIndex + 1)].ocupied == true)
 		{
-			printf("Found a Target to the Right \n");
+			printf("Found a Target at the Right \n");
 			return true;
 		}
 	}

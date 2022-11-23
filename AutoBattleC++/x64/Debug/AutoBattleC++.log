@@ -1,41 +1,4 @@
-﻿  AutoBattleC++.cpp
-  BattleField.cpp
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(9,10): warning C4067: tokens inesperados após diretiva de pré-processador - esperado um newline
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(115,56): error C2440: '=': não é possível converter de 'std::shared_ptr<Character>' para 'std::shared_ptr<Character> *'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(115,44): message : Nenhum operador de conversão definida pelo usuário disponível que possa realizar esta conversão, ou o operador não pode ser chamado
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(117,21): error C2039: ' Health': não é um membro de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(24): message : consulte a declaração de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(118,21): error C2039: ' BaseDamage': não é um membro de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(24): message : consulte a declaração de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(119,21): error C2039: ' DamageMultiplier': não é um membro de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(24): message : consulte a declaração de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(120,21): error C2039: ' PlayerIndex': não é um membro de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(24): message : consulte a declaração de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(127,21): error C2039: ' target': não é um membro de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(24): message : consulte a declaração de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(128,45): error C2679: '=' binário : nenhum operador encontrado que receba um operando de lado direito do tipo 'std::shared_ptr<Character> *' (ou não há conversão aceitável)
-D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(1642,17): message : poderia ser 'std::shared_ptr<Character> &std::shared_ptr<Character>::operator =(std::shared_ptr<Character> &&) noexcept'
-D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(1631,17): message : ou       'std::shared_ptr<Character> &std::shared_ptr<Character>::operator =(const std::shared_ptr<Character> &) noexcept'
-D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(1648,17): message : ou       'std::shared_ptr<Character> &std::shared_ptr<Character>::operator =<Character>(std::shared_ptr<Character> &&) noexcept'
-D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(1637,17): message : ou       'std::shared_ptr<Character> &std::shared_ptr<Character>::operator =<Character>(const std::shared_ptr<Character> &) noexcept'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(128,45): message : ao tentar corresponder a lista de argumentos '(std::shared_ptr<Character>, std::shared_ptr<Character> *)'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(134,42): error C2664: 'void std::list<Character,std::allocator<Character>>::push_back(_Ty &&)': não é possível converter um argumento 1 de 'std::shared_ptr<Character>' em '_Ty &&'
-          with
-          [
-              _Ty=Character
-          ]
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(134,42): message : Razão: não é possível converter de 'std::shared_ptr<Character>' para '_Ty'
-          with
-          [
-              _Ty=Character
-          ]
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(134,27): message : Nenhum operador de conversão definida pelo usuário disponível que possa realizar esta conversão, ou o operador não pode ser chamado
-D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\list(972,10): message : consulte a declaração de 'std::list<Character,std::allocator<Character>>::push_back'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(151,27): error C2660: 'Character::StartTurn': função não recebe 1 argumentos
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(35,10): message : consulte a declaração de 'Character::StartTurn'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(164,30): error C2039: ' Health': não é um membro de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(24): message : consulte a declaração de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(232,25): error C2039: ' currentBox': não é um membro de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(24): message : consulte a declaração de 'std::shared_ptr<Character>'
+﻿  BattleField.cpp
   Character.cpp
   Gerando Código...
+  AutoBattleC++.vcxproj -> D:\kokku_Test\AutoBattle\AutoBattleC++\x64\Debug\AutoBattleC++.exe

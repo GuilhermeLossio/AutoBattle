@@ -1,26 +1,24 @@
 ﻿  AutoBattleC++.cpp
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(22,15): error C2143: erro de sintaxe: ';' ausente antes de '<'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(22,15): error C4430: faltando especificador de tipo - int assumido. Observação: C++ não suporta default-int
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(22,33): error C2238: token(s) inesperado(s) precedendo ';'
   BattleField.cpp
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(22,15): error C2143: erro de sintaxe: ';' ausente antes de '<'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(22,15): error C4430: faltando especificador de tipo - int assumido. Observação: C++ não suporta default-int
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(22,33): error C2238: token(s) inesperado(s) precedendo ';'
 D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(9,10): warning C4067: tokens inesperados após diretiva de pré-processador - esperado um newline
 D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(115,56): error C2440: '=': não é possível converter de 'std::shared_ptr<Character>' para 'std::shared_ptr<Character> *'
 D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(115,44): message : Nenhum operador de conversão definida pelo usuário disponível que possa realizar esta conversão, ou o operador não pode ser chamado
 D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(117,21): error C2039: ' Health': não é um membro de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.h(23): message : consulte a declaração de 'std::shared_ptr<Character>'
+D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(24): message : consulte a declaração de 'std::shared_ptr<Character>'
 D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(118,21): error C2039: ' BaseDamage': não é um membro de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.h(23): message : consulte a declaração de 'std::shared_ptr<Character>'
+D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(24): message : consulte a declaração de 'std::shared_ptr<Character>'
 D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(119,21): error C2039: ' DamageMultiplier': não é um membro de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.h(23): message : consulte a declaração de 'std::shared_ptr<Character>'
+D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(24): message : consulte a declaração de 'std::shared_ptr<Character>'
 D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(120,21): error C2039: ' PlayerIndex': não é um membro de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.h(23): message : consulte a declaração de 'std::shared_ptr<Character>'
+D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(24): message : consulte a declaração de 'std::shared_ptr<Character>'
 D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(127,21): error C2039: ' target': não é um membro de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.h(23): message : consulte a declaração de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(128,22): error C2039: ' target': não é um membro de 'Character'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(8): message : consulte a declaração de 'Character'
+D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(24): message : consulte a declaração de 'std::shared_ptr<Character>'
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(128,45): error C2679: '=' binário : nenhum operador encontrado que receba um operando de lado direito do tipo 'std::shared_ptr<Character> *' (ou não há conversão aceitável)
+D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(1642,17): message : poderia ser 'std::shared_ptr<Character> &std::shared_ptr<Character>::operator =(std::shared_ptr<Character> &&) noexcept'
+D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(1631,17): message : ou       'std::shared_ptr<Character> &std::shared_ptr<Character>::operator =(const std::shared_ptr<Character> &) noexcept'
+D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(1648,17): message : ou       'std::shared_ptr<Character> &std::shared_ptr<Character>::operator =<Character>(std::shared_ptr<Character> &&) noexcept'
+D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(1637,17): message : ou       'std::shared_ptr<Character> &std::shared_ptr<Character>::operator =<Character>(const std::shared_ptr<Character> &) noexcept'
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(128,45): message : ao tentar corresponder a lista de argumentos '(std::shared_ptr<Character>, std::shared_ptr<Character> *)'
 D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(134,42): error C2664: 'void std::list<Character,std::allocator<Character>>::push_back(_Ty &&)': não é possível converter um argumento 1 de 'std::shared_ptr<Character>' em '_Ty &&'
           with
           [
@@ -33,45 +31,11 @@ D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(134,42): message : Razão
           ]
 D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(134,27): message : Nenhum operador de conversão definida pelo usuário disponível que possa realizar esta conversão, ou o operador não pode ser chamado
 D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\list(972,10): message : consulte a declaração de 'std::list<Character,std::allocator<Character>>::push_back'
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(151,27): error C2660: 'Character::StartTurn': função não recebe 1 argumentos
+D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(35,10): message : consulte a declaração de 'Character::StartTurn'
 D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(164,30): error C2039: ' Health': não é um membro de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.h(23): message : consulte a declaração de 'std::shared_ptr<Character>'
+D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(24): message : consulte a declaração de 'std::shared_ptr<Character>'
 D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(232,25): error C2039: ' currentBox': não é um membro de 'std::shared_ptr<Character>'
-D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.h(23): message : consulte a declaração de 'std::shared_ptr<Character>'
+D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(24): message : consulte a declaração de 'std::shared_ptr<Character>'
   Character.cpp
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(22,15): error C2143: erro de sintaxe: ';' ausente antes de '<'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(22,15): error C4430: faltando especificador de tipo - int assumido. Observação: C++ não suporta default-int
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(22,33): error C2238: token(s) inesperado(s) precedendo ';'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.cpp(36,17): error C2039: ' WalkTo': não é um membro de 'Character'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(8): message : consulte a declaração de 'Character'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.cpp(43,65): error C2511: 'void Character::StartTurn(Grid *,bool)': função membro sobrecarregada não encontrada em 'Character'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(8): message : consulte a declaração de 'Character'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.cpp(46,9): error C2065: 'target': identificador não declarado
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.cpp(48,9): error C2597: referência inválida para membro não static 'Character::IsDead'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(25): message : consulte a declaração de 'Character::IsDead'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.cpp(55,13): error C2352: 'Character::CheckCloseTargets': chamada inválida a função membro não static
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(35): message : consulte a declaração de 'Character::CheckCloseTargets'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.cpp(57,31): error C2039: ' target': não é um membro de 'Character'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.h(8): message : consulte a declaração de 'Character'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.cpp(57,37): error C2065: 'target': identificador não declarado
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.cpp(66,37): error C2065: 'target': identificador não declarado
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.cpp(68,20): error C2672: 'find': nenhuma função sobrecarregada correspondente encontrada
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.cpp(68,19): error C2780: '_InIt std::find(_InIt,const _InIt,const _Ty &)': espera 3 argumentos - 2 fornecidos
-D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xutility(5346): message : consulte a declaração de 'std::find'
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.cpp(83,42): error C2065: 'target': identificador não declarado
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.cpp(94,37): error C2065: 'target': identificador não declarado
-D:\kokku_Test\AutoBattle\AutoBattleC++\Character.cpp(105,42): error C2065: 'target': identificador não declarado
-  Grid.cpp
-D:\kokku_Test\AutoBattle\AutoBattleC++\Grid.cpp(16,45): error C2664: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,const _Ty &)': não é possível converter um argumento 2 de 'Types::GridBox *' em 'const _Ty &'
-          with
-          [
-              _Ty=Types::GridBox
-          ]
-D:\kokku_Test\AutoBattle\AutoBattleC++\Grid.cpp(16,45): message : Razão: não é possível converter de 'Types::GridBox *' para 'const _Ty'
-          with
-          [
-              _Ty=Types::GridBox
-          ]
-D:\kokku_Test\AutoBattle\AutoBattleC++\Grid.cpp(16,45): message : Nenhum construtor pôde receber o tipo de origem, ou resolução de sobrecarga de construtor foi ambígua
-D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\Vector(841,37): message : consulte a declaração de 'std::vector<Types::GridBox,std::allocator<Types::GridBox>>::insert'
-  Types.cpp
   Gerando Código...

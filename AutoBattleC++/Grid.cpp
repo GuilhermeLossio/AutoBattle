@@ -30,10 +30,34 @@ void Grid::drawBattlefield(int Lines, int Columns)
         for (int j = 0; j < Columns; j++)
         {
             Types::GridBox* currentgrid = new Types::GridBox();
+            currentgrid->xIndex = i;
+            currentgrid->yIndex = j;
+
+            bool bOccupiedByPlayer = false;
+
+            if (currentgrid->xIndex == PlayerCurrentLocation->xIndex && currentgrid->yIndex == PlayerCurrentLocation->yIndex)
+            {
+                currentgrid->ocupied = true;
+                bOccupiedByPlayer = true;
+
+            }
+            else if (currentgrid->xIndex == EnemyCurrentLocation->xIndex && currentgrid->yIndex == EnemyCurrentLocation->yIndex)
+            {
+                currentgrid->ocupied = true;
+            }
+
+            //Here we going to see ig the place is occuped.
             if (currentgrid->ocupied)
             {
-                //if()
-                printf("[X]\t");
+                if (bOccupiedByPlayer)
+                {
+                    printf("[P]\t");
+                }
+                else
+                {
+                    printf("[X]\t");
+                }
+
             }
             else
             {

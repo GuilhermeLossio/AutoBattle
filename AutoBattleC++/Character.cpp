@@ -17,25 +17,27 @@ Character::~Character()
 
 }
 
-bool Character::TakeDamage(float amount) 
+void Character::TakeDamage(float amount) 
 {
+    Health = Health - amount;
 	if ((Health -= BaseDamage) <= 0) 
 	{
 		Die();
-		return true;
 	}
-	return false;
 }
 
 void Character::Die() 
 {
-	// TODO >> kill
-	//TODO >> end the game?
-}
+    IsDead = true;
 
-void Character::WalkTo(bool CanWalk) 
-{
-
+    if (PlayerIndex == 0)
+    {
+        printf("\nPlayer Died!\n");
+    }
+    else
+    {
+        printf("\nEnemy Died!\n");
+    }
 }
 
 
@@ -49,82 +51,193 @@ void Character::StartTurn(Grid* battlefield, bool IsPlayerTurn) {
         return;
     }
 
-
+    //Look who the turn's from.
+    if (PlayerIndex == 0)
     {
-
-        if (CheckCloseTargets(battlefield))
-        {
-            Attack(Character::target);
-
-
-            return;
-        }
-        else
-        {   //if there is no target close enough, calculates in wich direction this character should move to be closer to a possible target
-            
-            
-            if (currentBox.xIndex > target->currentBox.xIndex)
-            {
-                if(find(battlefield->grids.begin(), battlefield->grids.end(), currentBox.Index - 1) != battlefield->grids.end())
-                
-                {
-                    currentBox.ocupied = false;
-                    battlefield->grids[currentBox.Index] = currentBox;
-
-                    currentBox = (battlefield->grids[currentBox.Index - 1]);
-                    currentBox.ocupied = true;
-                    battlefield->grids[currentBox.Index] = currentBox;
-                    //Console.WriteLine($"Player {PlayerIndex} walked left\n");
-                    battlefield->drawBattlefield(5, 5);
-
-                    return;
-                }
-            }
-            else if (currentBox.xIndex < target->currentBox.xIndex)
-            {
-                currentBox.ocupied = false;
-                battlefield->grids[currentBox.Index] = currentBox;
-                currentBox = (battlefield->grids[currentBox.Index + 1]);
-                return;
-                battlefield->grids[currentBox.Index] = currentBox;
-                //Console.WriteLine($"Player {PlayerIndex} walked right\n");
-                battlefield->drawBattlefield(5, 5);
-            }
-
-            if (currentBox.yIndex > target->currentBox.yIndex)
-            {
-                battlefield->drawBattlefield(5, 5);
-                currentBox.ocupied = false;
-                battlefield->grids[currentBox.Index] = currentBox;
-                currentBox = battlefield->grids[(currentBox.Index - battlefield->xLenght)];
-                currentBox.ocupied = true;
-                battlefield->grids[currentBox.Index] = currentBox;
-                //Console.WriteLine($"PlayerB {PlayerIndex} walked up\n");
-                return;
-            }
-            else if (currentBox.yIndex < target->currentBox.yIndex)
-            {
-                currentBox.ocupied = true;
-                battlefield->grids[currentBox.Index] = currentBox;
-                currentBox = battlefield->grids[currentBox.Index + battlefield->xLenght];
-                currentBox.ocupied = false;
-                battlefield->grids[currentBox.Index] = currentBox;
-                //Console.WriteLine($"Player {PlayerIndex} walked down\n");
-                battlefield->drawBattlefield(5, 5);
-
-                return;
-            }
-        }
+        printf("\nPlayer Action:\n");
     }
+    else
+    {
+        printf("\nEnemy Action:\n");
+    }
+
+
+	if (CheckCloseTargets(battlefield)) //Checks if there is any Close Attack Target (Diagonals are not Considered)
+	{
+
+		Attack(&*target);
+
+		return;
+	}
+	else
+	{   // if there is no target close enough, calculates in wich direction this character should move to be closer to a possible target
+
+		//Makes the Current Character Position Free because it will move
+		battlefield->grids[(currentBox.xIndex * battlefield->xLenght) + currentBox.yIndex].ocupied = false;
+
+		if (currentBox.xIndex > target->currentBox.xIndex)
+		{
+			//This make the character go up
+			battlefield->grids[((currentBox.xIndex - 1) * battlefield->xLenght) + currentBox.yIndex].ocupied = true;
+
+			if (IsPlayerTurn)
+			{
+
+				battlefield->PlayerCurrentLocation->xIndex = battlefield->PlayerCurrentLocation->xIndex - 1;
+				currentBox = *battlefield->PlayerCurrentLocation;
+			}
+			else
+			{
+				battlefield->EnemyCurrentLocation->xIndex = battlefield->EnemyCurrentLocation->xIndex - 1;
+				currentBox = *battlefield->EnemyCurrentLocation;
+			}
+
+			currentBox.ocupied = true;
+			target->target->currentBox = currentBox;
+
+			battlefield->drawBattlefield(5, 5);
+
+			return;
+		}
+		else if (currentBox.xIndex < target->currentBox.xIndex)
+		{
+			//This make the character goe down
+			battlefield->grids[((currentBox.xIndex + 1) * battlefield->xLenght) + currentBox.yIndex].ocupied = true;
+
+			if (IsPlayerTurn)
+			{
+				battlefield->PlayerCurrentLocation->xIndex = battlefield->PlayerCurrentLocation->xIndex + 1;
+				currentBox = *battlefield->PlayerCurrentLocation;
+			}
+			else
+			{
+				battlefield->EnemyCurrentLocation->xIndex = battlefield->EnemyCurrentLocation->xIndex + 1;
+				currentBox = *battlefield->EnemyCurrentLocation;
+			}
+
+			currentBox.ocupied = true;
+			target->target->currentBox = currentBox;
+
+			battlefield->drawBattlefield(5, 5);
+
+			return;
+		}
+
+		if (currentBox.yIndex > target->currentBox.yIndex)
+		{
+			//This make the character go left
+			battlefield->grids[(currentBox.xIndex * battlefield->xLenght) + (currentBox.yIndex - 1)].ocupied = true;
+
+			if (IsPlayerTurn)
+			{
+				battlefield->PlayerCurrentLocation->yIndex = battlefield->PlayerCurrentLocation->yIndex - 1;
+				currentBox = *battlefield->PlayerCurrentLocation;
+			}
+			else
+			{
+				battlefield->EnemyCurrentLocation->yIndex = battlefield->EnemyCurrentLocation->yIndex - 1;
+				currentBox = *battlefield->EnemyCurrentLocation;
+			}
+
+			currentBox.ocupied = true;
+			target->target->currentBox = currentBox;
+
+			battlefield->drawBattlefield(5, 5);
+
+			return;
+
+		}
+		else if (currentBox.yIndex < target->currentBox.yIndex)
+		{
+			//This make the character go right
+
+			battlefield->grids[(currentBox.xIndex * battlefield->xLenght) + (currentBox.yIndex + 1)].ocupied = true;
+
+			if (IsPlayerTurn)
+			{
+				battlefield->PlayerCurrentLocation->yIndex = battlefield->PlayerCurrentLocation->yIndex + 1;
+				currentBox = *battlefield->PlayerCurrentLocation;
+			}
+			else
+			{
+				battlefield->EnemyCurrentLocation->yIndex = battlefield->EnemyCurrentLocation->yIndex + 1;
+				currentBox = *battlefield->EnemyCurrentLocation;
+			}
+
+			currentBox.ocupied = true;
+			target->target->currentBox = currentBox;
+
+			battlefield->drawBattlefield(5, 5);
+
+			return;
+		}
+
+
+
+	}
 }
 
 bool Character::CheckCloseTargets(Grid* battlefield)
 {
+	currentBox.xIndex = target->target->currentBox.xIndex;
+	currentBox.yIndex = target->target->currentBox.yIndex;
 
+	//verify top. if not move top.
+	if (battlefield->grids[((currentBox.xIndex) * battlefield->xLenght) + currentBox.yIndex].xIndex != 0)
+	{
+		if (battlefield->grids[((currentBox.xIndex - 1) * battlefield->xLenght) + currentBox.yIndex].ocupied == true)
+		{
+			printf("Found a Target at the Top \n");
+			return true;
+		}
+	}
+
+
+	//verify bot. if not move down.
+	if (battlefield->grids[((currentBox.xIndex) * battlefield->xLenght) + currentBox.yIndex].xIndex != (battlefield->xLenght - 1))
+	{
+		if (battlefield->grids[((currentBox.xIndex + 1) * battlefield->xLenght) + currentBox.yIndex].ocupied == true)
+		{
+			printf("Found a Target at the Bottom \n");
+			return true;
+		}
+	}
+
+	//verify left. if not move left.
+	if (battlefield->grids[((currentBox.xIndex) * battlefield->xLenght) + currentBox.yIndex].yIndex != 0)
+	{
+		if (battlefield->grids[(currentBox.xIndex * battlefield->xLenght) + (currentBox.yIndex - 1)].ocupied == true)
+		{
+			printf("Found a Target to the Left \n");
+			return true;
+		}
+	}
+
+	//verify right. if not move right.
+
+	if (battlefield->grids[((currentBox.xIndex) * battlefield->xLenght) + currentBox.yIndex].yIndex != (battlefield->yLength - 1))
+	{
+		if (battlefield->grids[(currentBox.xIndex * battlefield->xLenght) + (currentBox.yIndex + 1)].ocupied == true)
+		{
+			printf("Found a Target to the Right \n");
+			return true;
+		}
+	}
+
+	return false;
 }
 
 void Character::Attack(Character* target) 
 {
+	if (PlayerIndex == 0)
+	{
+		printf("The Player attacks the Enemy!\n");
+	}
+	else
+	{
+		printf("The Enemy attacks the Player!\n");
+	}
 
+	target->TakeDamage(BaseDamage * DamageMultiplier);
 }
 

@@ -2,6 +2,8 @@
 #include "Grid.h"
 #include "Character.h"
 #include "Types.h"
+#include <memory>
+#include <vector>
 
 using namespace std;
 
@@ -26,11 +28,11 @@ public:
 
     Types::GridBox currentBox;
 
-    bool TakeDamage(float amount);
+    void TakeDamage(float amount);
 
     void Die();
 
-    void StartTurn(Grid* battlefield);
+    void StartTurn(Grid* battlefield, bool IsPlayerTurn);
 
     bool CheckCloseTargets(Grid* battlefield);
 

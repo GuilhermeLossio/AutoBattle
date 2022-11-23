@@ -15,31 +15,50 @@ BattleField::BattleField() {
     grid = new Grid(5, 5);
     AllPlayers = new list<Character>();
     int currentTurn = 0;
-    int numberOfPossibleTiles = grid->grids.size();
-    Setup();
+
+    //Testing if is necessary
+    //int numberOfPossibleTiles = grid->grids.size();
+    //Setup();
 }
 
 void BattleField::Setup()
 {
-  
-   
     GetPlayerChoice();
+    CreateEnemyCharacter();
+    StartGame();
 }
 
 void BattleField::GetPlayerChoice()
 {
+    string choice;
     //asks for the player to choose between for possible classes via console.
     printf("Choose Between One of this Classes:\n");
 
     printf("[1] Paladin, [2] Warrior, [3] Cleric, [4] Archer");
     //store the player choice in a variable
-    std::string choice;
 
-    std::getline(std::cin, choice);
+    getline(cin, choice);
 
-    int num = stoi(choice);
+    while (true) {
+    if (choice.length() == 1)
+        {
+            if (choice[0] == '1'
+                || choice[0] == '2'
+                || choice[0] == '3'
+                || choice[0] == '4')
+            {
+                break;
+            }
+        }
+    }
+
+    CreatePlayerCharacter(choice);
+
+    //=============================================================
+
+    //int num = stoi(choice);
     
-    CreatePlayerCharacter(num);
+    //CreatePlayerCharacter(num);
     
 
 
@@ -73,7 +92,7 @@ void BattleField::CreatePlayerCharacter(int classIndex)
     Types::CharacterClass* characterClass = (Types::CharacterClass*)classIndex;
     printf("Player Class Choice: {characterClass}");
     
-    PlayerCharacter = std::make_shared<Character>(characterClass);
+    PlayerCharacter = make_shared<Character>(characterClass);
     
     PlayerCharacter->Health = 100;
     PlayerCharacter->BaseDamage = 20;
@@ -116,7 +135,7 @@ void BattleField::StartTurn() {
     {
         //AllPlayers.Sort();  
     }
-    std::list<Character>::iterator it;
+    list<Character>::iterator it;
 
     for (it = AllPlayers->begin(); it != AllPlayers->end(); ++it) {
         it->StartTurn(grid);

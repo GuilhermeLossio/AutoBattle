@@ -20,16 +20,22 @@ public:
     int PlayerIndex;
     //public Character Target{ get; set; }
 
-    Character* target;
 
-    bool IsDead;
+    //Percebi que o utilizamento de instancia aqui estava feito incorretamente.
+    shared_ptr<Character> target;
+    //Character* target;
+
+    //Escolhi fazer a inicialização da variavel para que a mesma não tenha possibilidade de conter um valor nulo e o jogador comecar morto.
+    bool IsDead = false;
     char Icon;
 
     Types::GridBox currentBox;
 
     bool TakeDamage(float amount);
 
-    int getIndex(std::vector<Types::GridBox*> v, int index);
+
+    //????
+    //int getIndex(std::vector<Types::GridBox*> v, int index);
 
     void Die();
 

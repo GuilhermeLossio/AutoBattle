@@ -81,6 +81,7 @@ void BattleField::CreatePlayerCharacter(int classIndex)
     
     PlayerCharacter->Health = 100;
     PlayerCharacter->BaseDamage = 30;
+    PlayerCharacter->DamageMultiplier = 1;
     PlayerCharacter->PlayerIndex = 0;
 
     CreateEnemyCharacter();

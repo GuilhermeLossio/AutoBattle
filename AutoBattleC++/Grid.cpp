@@ -13,11 +13,9 @@ Grid::Grid(int Lines, int Columns)
         for (int j = 0; j < Columns; j++)
         {
             Types::GridBox* newBox = new Types::GridBox(i, j, false, (Columns * i + j));
-            grids.insert(grids.end(), newBox);
-            //Console.Write($"{newBox.Index}\n");
+            grids.insert(grids.end(), *newBox);
         }
     }
-	//drawBattlefield(Lines, Columns);
 }
 
 Grid::~Grid() 

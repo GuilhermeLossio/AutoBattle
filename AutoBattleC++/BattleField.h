@@ -5,6 +5,7 @@
 #include <list>
 #include <iostream>
 #include "Grid.h"
+#include <memory>
 
 
 using namespace std;
@@ -23,7 +24,6 @@ public:
 	shared_ptr<Character>* EnemyCharacter;
 
 	int currentTurn;
-	int numberOfPossibleTiles;
 
 
 	void Setup();

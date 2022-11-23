@@ -1,14 +1,19 @@
 #include "Grid.h"
 #include "Character.h"
 #include "Types.h"
-#include "Character.h"
 #include <vector>
 #include <algorithm>
+
+
 
 using namespace std;
 Character::Character(Types::CharacterClass charcaterClass)
 {
-
+    float Health;
+    float BaseDamage;
+    float DamageMultiplier;
+    //public GridBox currentBox;
+    int PlayerIndex;
 }
 
 Character::~Character() 
@@ -51,7 +56,7 @@ void Character::StartTurn(Grid* battlefield) {
             return;
         }
         else
-        {   // if there is no target close enough, calculates in wich direction this character should move to be closer to a possible target
+        {   //if there is no target close enough, calculates in wich direction this character should move to be closer to a possible target
             
             
             if (currentBox.xIndex > target->currentBox.xIndex)

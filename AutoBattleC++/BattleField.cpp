@@ -1,3 +1,4 @@
+
 #include "Grid.h"
 #include "BattleField.h"
 #include "Types.h"
@@ -9,8 +10,8 @@
 
 using namespace std;
 
+
 BattleField::BattleField() {
-    
     grid = new Grid(5, 5);
     AllPlayers = new list<Character>();
     int currentTurn = 0;
@@ -35,9 +36,18 @@ void BattleField::GetPlayerChoice()
     std::string choice;
 
     std::getline(std::cin, choice);
+
+    int num = stoi(choice);
     
-    cin >> choice;
-    switch ((choice))
+    CreatePlayerCharacter(num);
+    
+
+
+    /* if(cin >> choice)
+    {
+        CreatePlayerCharacter(choice);
+    } */
+    /* switch ((choice))
     {
     case "1":
         CreatePlayerCharacter(choice);
@@ -54,7 +64,7 @@ void BattleField::GetPlayerChoice()
     default:
         GetPlayerChoice();
         break;
-    }
+    } */
 }
 
 void BattleField::CreatePlayerCharacter(int classIndex)

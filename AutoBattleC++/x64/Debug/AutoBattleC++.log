@@ -1,0 +1,59 @@
+﻿  AutoBattleC++.cpp
+  BattleField.cpp
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(18,51): warning C4267: 'inicializando': conversão de 'size_t' para 'int', possível perda de dados
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(73,79): warning C4312: 'conversão de tipo': conversão de 'int' para 'Types::CharacterClass *' de tamanho maior
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(93,47): error C2440: '=': não é possível converter de 'Character *' para 'std::shared_ptr<Character> *'
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(93,35): message : Tipos apontados não são relacionados; conversão requer reinterpret_cast, conversão C-style ou conversão function-style
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(94,21): error C2039: ' Health': não é um membro de 'std::shared_ptr<Character>'
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.h(19): message : consulte a declaração de 'std::shared_ptr<Character>'
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(104,21): error C2039: ' target': não é um membro de 'std::shared_ptr<Character>'
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.h(19): message : consulte a declaração de 'std::shared_ptr<Character>'
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(105,45): error C2440: '=': não é possível converter de 'std::shared_ptr<Character> *' para 'Character *'
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(105,31): message : Tipos apontados não são relacionados; conversão requer reinterpret_cast, conversão C-style ou conversão function-style
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(106,42): error C2664: 'void std::list<Character,std::allocator<Character>>::push_back(_Ty &&)': não é possível converter um argumento 1 de 'std::shared_ptr<Character>' em '_Ty &&'
+          with
+          [
+              _Ty=Character
+          ]
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(106,42): message : Razão: não é possível converter de 'std::shared_ptr<Character>' para '_Ty'
+          with
+          [
+              _Ty=Character
+          ]
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(106,27): message : Nenhum operador de conversão definida pelo usuário disponível que possa realizar esta conversão, ou o operador não pode ser chamado
+D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\list(972,10): message : consulte a declaração de 'std::list<Character,std::allocator<Character>>::push_back'
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(107,41): error C2664: 'void std::list<Character,std::allocator<Character>>::push_back(_Ty &&)': não é possível converter um argumento 1 de 'std::shared_ptr<Character> *' em '_Ty &&'
+          with
+          [
+              _Ty=Character
+          ]
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(107,41): message : Razão: não é possível converter de 'std::shared_ptr<Character> *' para '_Ty'
+          with
+          [
+              _Ty=Character
+          ]
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(107,41): message : Nenhum construtor pôde receber o tipo de origem, ou resolução de sobrecarga de construtor foi ambígua
+D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\list(972,10): message : consulte a declaração de 'std::list<Character,std::allocator<Character>>::push_back'
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(135,30): error C2039: ' Health': não é um membro de 'std::shared_ptr<Character>'
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.h(19): message : consulte a declaração de 'std::shared_ptr<Character>'
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.cpp(203,25): error C2039: ' currentBox': não é um membro de 'std::shared_ptr<Character>'
+D:\kokku_Test\AutoBattle\AutoBattleC++\BattleField.h(19): message : consulte a declaração de 'std::shared_ptr<Character>'
+  Character.cpp
+D:\kokku_Test\AutoBattle\AutoBattleC++\Character.cpp(11,1): error C2512: 'Types::GridBox': nenhum construtor padrão apropriado disponível
+D:\kokku_Test\AutoBattle\AutoBattleC++\Types.h(6,12): message : consulte a declaração de 'Types::GridBox'
+  Grid.cpp
+D:\kokku_Test\AutoBattle\AutoBattleC++\Grid.cpp(16,45): error C2664: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,const _Ty &)': não é possível converter um argumento 2 de 'Types::GridBox *' em 'const _Ty &'
+          with
+          [
+              _Ty=Types::GridBox
+          ]
+D:\kokku_Test\AutoBattle\AutoBattleC++\Grid.cpp(16,45): message : Razão: não é possível converter de 'Types::GridBox *' para 'const _Ty'
+          with
+          [
+              _Ty=Types::GridBox
+          ]
+D:\kokku_Test\AutoBattle\AutoBattleC++\Grid.cpp(16,45): message : Nenhum construtor pôde receber o tipo de origem, ou resolução de sobrecarga de construtor foi ambígua
+D:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\Vector(841,37): message : consulte a declaração de 'std::vector<Types::GridBox,std::allocator<Types::GridBox>>::insert'
+D:\kokku_Test\AutoBattle\AutoBattleC++\Grid.cpp(34,61): error C2512: 'Types::GridBox::GridBox': nenhum construtor padrão apropriado disponível
+  Types.cpp
+  Gerando Código...

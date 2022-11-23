@@ -3,6 +3,8 @@
 #include "Character.h"
 #include "Types.h"
 
+using namespace std;
+
 class Character
 {
 public:
@@ -27,7 +29,7 @@ public:
 
     bool TakeDamage(float amount);
 
-    int getIndex(vector<Types::GridBox*> v, int index);
+    int getIndex(std::vector<Types::GridBox*> v, int index);
 
     void Die();
 

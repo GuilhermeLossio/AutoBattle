@@ -1,0 +1,18 @@
+                                                                      DOCUMENTATION
+=====================================================================================================================================================================================================================================================
+
+1.	Before anything i tryed to run the Project on Visual Studio, but he didn’t build for the Copilation Errors,
+At Character.h, there not the namespace.
+2.	There some wrong uses of the namespace, like don’t use the namespace std, and use “std::” in some parts that it already include.
+3.	The event of the player being to add the player, enemy and started the game was add to BattleField::Setup
+4.	I removed the switch case for function CreatePlayerCharacter().
+5.	I puted a switch case on BattleField::CreatePlayerCharacter to show the character chosen by the player. (I also increased the damage to 30)
+6.	I found some erros made that didn’t used make_shared to make a instance.
+I decressed the enemy atk too.
+7.	I made some changes at grid files, and fixed some erros.
+Latter i going to take a time for fix the enemy function.
+8.	I add the code to verify if the player is dead or the enemy is dead. Basically when Die() is called, if the player isn’t dead, the enemy will be. I also putted the
+operation to reduce the health from the attacked target and changed the TakeDamage from bool to void.
+9.	I made the character detection and movement for player and enemy. Also fixed more some problems with the grid. Still having some problems with the EnemyCharacter.
+10.	As final touches I fixed the problem that was occurring with the enemies and the Grid, which did not appear.
+11.	Later i found a method to make the player's position random.
